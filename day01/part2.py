@@ -1,3 +1,6 @@
+from day01.common import read_expenses
+
+
 def main():
     expenses = read_expenses()
 
@@ -17,13 +20,6 @@ def main():
                 return
     else:
         print("No three items summing 2020 are detected")
-
-
-def read_expenses():
-    with open("input", "r") as file:
-        lines = file.readlines()
-    expenses = [int(line.strip()) for line in lines]
-    return expenses
 
 
 if __name__ == "__main__":
