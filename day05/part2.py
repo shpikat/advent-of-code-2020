@@ -12,14 +12,25 @@ def main():
     seats.sort()
     start_index = seats.index((seats[0] & 0b1111111000) + 0b1000)
     end_index = rindex(seats, (seats[-1] & 0b1111111000) - 1)
-    for index, seat in enumerate(seats[start_index:end_index], seats[start_index]):
-        if index != seat:
-            print(index)
-            break
+
+    print(find_gap_in_sequence(seats[start_index:end_index]))
 
 
 def rindex(lst: List[int], value: int) -> int:
     return len(lst) - operator.indexOf(reversed(lst), value) - 1
+
+
+def find_gap_in_sequence(lst: List[int]) -> int:
+    index_delta = lst[0]
+    low, high = 0, len(lst) - 1
+    while high - low > 1:
+        median = low + ((high - low) // 2)
+        if lst[median] == median + index_delta:
+            low = median
+        else:
+            high = median
+    else:
+        return lst[low] + 1 if lst[low] == low + index_delta else lst[low]
 
 
 if __name__ == "__main__":
