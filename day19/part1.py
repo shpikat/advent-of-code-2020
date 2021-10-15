@@ -14,11 +14,8 @@ def main():
 
 
 def get_matching_messages_for_rule(raw_rules: List[str], rule_index: int) -> List[str]:
-    memoizer = {}
-    # extract the final characters to simplify the recursion
-    for i, rule in enumerate(raw_rules):
-        if rule[0] == rule[-1] == '"':
-            memoizer[str(i)] = [rule[1:-1]]
+    # pre-populate the final characters to simplify the recursion
+    memoizer = {str(i): [rule[1:-1]] for i, rule in enumerate(raw_rules) if rule[0] == rule[-1] == '"'}
     return get_messages(raw_rules, memoizer, raw_rules[rule_index])
 
 
