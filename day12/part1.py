@@ -15,8 +15,8 @@ actions = {
 }
 
 
-def main():
-    instructions = read_instructions()
+def solve(filename: str) -> int:
+    instructions = read_instructions(filename)
 
     angle = 0
     x = 0
@@ -24,8 +24,4 @@ def main():
     for action, value in instructions:
         angle, x, y = actions[action](angle, x, y, value)
 
-    print(abs(x) + abs(y))
-
-
-if __name__ == "__main__":
-    main()
+    return abs(x) + abs(y)

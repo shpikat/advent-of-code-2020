@@ -1,11 +1,11 @@
 import operator
 from typing import List
 
-from day05.common import read_boarding_tickets, code_to_id
+from day05.common import code_to_id, read_boarding_tickets
 
 
-def main():
-    boarding_tickets = read_boarding_tickets()
+def solve(filename: str) -> int:
+    boarding_tickets = read_boarding_tickets(filename)
 
     seats = [code_to_id(ticket) for ticket in boarding_tickets]
 
@@ -13,7 +13,7 @@ def main():
     start_index = seats.index((seats[0] & 0b1111111000) + 0b1000)
     end_index = rindex(seats, (seats[-1] & 0b1111111000) - 1)
 
-    print(find_gap_in_sequence(seats[start_index:end_index]))
+    return find_gap_in_sequence(seats[start_index:end_index])
 
 
 def rindex(lst: List[int], value: int) -> int:
@@ -31,7 +31,3 @@ def find_gap_in_sequence(lst: List[int]) -> int:
             high = median
     else:
         return lst[low] + 1 if lst[low] == low + index_delta else lst[low]
-
-
-if __name__ == "__main__":
-    main()

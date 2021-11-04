@@ -11,8 +11,8 @@ class Tile:
     image: List[str]
 
 
-def read_tiles() -> List[Tile]:
-    with open("input", "r") as file:
+def read_tiles(filename: str) -> List[Tile]:
+    with open(filename, "r") as file:
         return [read_tile(tile) for tile in (file.read().strip().split('\n\n'))]
 
 

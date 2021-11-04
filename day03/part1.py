@@ -1,10 +1,10 @@
-from typing import List, Iterable
+from typing import Iterable, List
 
-from day03.common import read_map, TREE
+from day03.common import TREE, read_map
 
 
-def main():
-    map_input = read_map()
+def solve(filename: str) -> int:
+    map_input = read_map(filename)
     x = 0
     wrap_at = len(map_input[0])
     count = 0
@@ -13,14 +13,10 @@ def main():
         x = (x + 3) % wrap_at
         if line[x] == TREE:
             count += 1
-    print(count)
+    return count
 
 
 def with_first_element_skipped(a_list: List[str]) -> Iterable[str]:
     an_iterator = iter(a_list)
     next(an_iterator)
     return an_iterator
-
-
-if __name__ == "__main__":
-    main()

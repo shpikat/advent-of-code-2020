@@ -4,8 +4,8 @@ from typing import List, Tuple
 line_parser = re.compile(r"(\d+)-(\d+) (\w): (\w+)")
 
 
-def read_passwords() -> List[Tuple[int, int, str, str]]:
-    with open("input", "r") as file:
+def read_passwords(filename: str) -> List[Tuple[int, int, str, str]]:
+    with open(filename, "r") as file:
         return [to_tuple(line.rstrip()) for line in file]
 
 

@@ -1,12 +1,12 @@
 import operator
-from collections import defaultdict, Counter
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from functools import reduce
 from itertools import product
 from math import sqrt
-from typing import List, Callable, Dict
+from typing import Callable, Dict, List
 
-from day20.common import read_tiles, Tile
+from day20.common import Tile, read_tiles
 
 transformations = [
     lambda tile: tile,
@@ -26,8 +26,8 @@ class TileAndEdges:
     edges: List[str]
 
 
-def main():
-    tiles = read_tiles()
+def solve(filename: str) -> int:
+    tiles = read_tiles(filename)
 
     # We can easily find the corner tiles, get the answer and pass, but the task explicitly says:
     # "Your first task is to reassemble the original image by orienting the tiles so they fit together."
@@ -42,7 +42,7 @@ def main():
     #         print('  '.join(tile.image[line_number] for tile in row))
     #     print()
 
-    print(reduce(operator.mul, (arranged_tiles[i][j].id for i, j in product((0, -1), repeat=2))))
+    return reduce(operator.mul, (arranged_tiles[i][j].id for i, j in product((0, -1), repeat=2)))
 
 
 def assemble_image(tiles: List[Tile]) -> List[List[Tile]]:
@@ -147,7 +147,3 @@ def flip_vertically(tile: Tile) -> Tile:
 
 def flip_horizontally(tile: Tile) -> Tile:
     return Tile(tile.id, [line[::-1] for line in tile.image])
-
-
-if __name__ == "__main__":
-    main()

@@ -18,8 +18,8 @@ def is_valid_hgt(x: str) -> bool:
     return False
 
 
-def main():
-    passports = read_input()
+def solve(filename: str) -> int:
+    passports = read_input(filename)
     validations = (
         ('byr', lambda x: 1920 <= int(x) <= 2002),
         ('iyr', lambda x: 2010 <= int(x) <= 2020),
@@ -34,8 +34,4 @@ def main():
     for passport in passports:
         if all((field in passport and is_valid(passport[field]) for field, is_valid in validations)):
             valid_count += 1
-    print(valid_count)
-
-
-if __name__ == "__main__":
-    main()
+    return valid_count

@@ -3,8 +3,8 @@ from collections import deque
 from day23.common import read_labeling
 
 
-def main():
-    labeling = read_labeling()
+def solve(filename: str) -> int:
+    labeling = read_labeling(filename)
     circle = deque((int(ch) for ch in labeling), len(labeling))
 
     for i in range(100):
@@ -22,8 +22,4 @@ def main():
             circle.insert(index + 1, value)
 
     circle.rotate(-circle.index(1))
-    print(''.join(str(i) for i in circle)[1:])
-
-
-if __name__ == "__main__":
-    main()
+    return int(''.join(str(i) for i in circle)[1:])

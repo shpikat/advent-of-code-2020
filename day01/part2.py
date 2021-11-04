@@ -1,8 +1,8 @@
 from day01.common import read_expenses
 
 
-def main():
-    expenses = read_expenses()
+def solve(filename: str) -> int:
+    expenses = read_expenses(filename)
 
     expenses.sort()
     for index_third, third in enumerate(expenses):
@@ -24,11 +24,6 @@ def main():
                 if big == index_third:
                     big -= 1
             else:
-                print(expenses[little] * expenses[big] * third)
-                return
+                return expenses[little] * expenses[big] * third
     else:
         print("No three items summing 2020 are detected")
-
-
-if __name__ == "__main__":
-    main()

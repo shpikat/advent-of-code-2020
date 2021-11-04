@@ -2,7 +2,7 @@ import itertools
 from dataclasses import dataclass
 from typing import Set
 
-from day17.common import read_initial_state, INACTIVE, ACTIVE
+from day17.common import ACTIVE, INACTIVE, read_initial_state
 
 
 @dataclass(frozen=True)
@@ -13,8 +13,8 @@ class Coordinate:
     w: int
 
 
-def main():
-    initial_state = read_initial_state()
+def solve(filename: str) -> int:
+    initial_state = read_initial_state(filename)
 
     grid = {Coordinate(x, y, 0, 0)
             for y, line in enumerate(initial_state)
@@ -52,7 +52,7 @@ def main():
         grid.update(elements_to_add)
         grid.difference_update(elements_to_remove)
 
-    print(len(grid))
+    return len(grid)
 
 
 def count_neighbourhood(grid: Set[Coordinate], x: int, y: int, z: int, w: int) -> int:
@@ -60,7 +60,3 @@ def count_neighbourhood(grid: Set[Coordinate], x: int, y: int, z: int, w: int) -
     # For better performance the calculations can be short-circuited at the count specific for each case (4 or 5)
     return sum(1 for dx, dy, dz, dw in (itertools.product((-1, 0, 1), repeat=4))
                if Coordinate(x + dx, y + dy, z + dz, w + dw) in grid)
-
-
-if __name__ == "__main__":
-    main()

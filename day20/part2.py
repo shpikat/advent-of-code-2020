@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List, Set, Tuple
 
-from day20.common import read_tiles, Tile
+from day20.common import Tile, read_tiles
 from day20.part1 import assemble_image
 
 
@@ -47,8 +47,8 @@ class Matrix:
         )
 
 
-def main():
-    tiles = read_tiles()
+def solve(filename: str) -> int:
+    tiles = read_tiles(filename)
 
     image = strip_borders(assemble_image(tiles))
     sea = Matrix.digitize(image)
@@ -60,7 +60,7 @@ def main():
 '''
     monster = Matrix.digitize(raw_monster.strip('\n').split('\n'))
 
-    print(get_roughness(sea, monster))
+    return get_roughness(sea, monster)
 
 
 def strip_borders(tiles: List[List[Tile]]) -> List[str]:
@@ -89,7 +89,3 @@ def equal(matrix: Matrix) -> Matrix:
 
 def flipped(matrix: Matrix) -> Matrix:
     return matrix.flipped()
-
-
-if __name__ == "__main__":
-    main()

@@ -3,8 +3,8 @@ from collections import Counter
 from day21.common import read_foods
 
 
-def main():
-    foods = read_foods()
+def solve(filename: str) -> int:
+    foods = read_foods(filename)
 
     counts = Counter()
     candidates = {}
@@ -21,8 +21,4 @@ def main():
             del counts[ingredient]
 
     # or counts.total() since Python 3.10
-    print(sum(count for _, count in counts.items()))
-
-
-if __name__ == "__main__":
-    main()
+    return sum(count for _, count in counts.items())

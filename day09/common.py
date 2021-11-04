@@ -3,13 +3,12 @@ from collections import deque
 from typing import List
 
 
-def read_numbers() -> List[int]:
-    with open("input", "r") as file:
+def read_numbers(filename: str) -> List[int]:
+    with open(filename, "r") as file:
         return [int(line.rstrip()) for line in file.readlines()]
 
 
-def get_invalid_number(numbers: List[int]) -> int:
-    preamble_size = 25
+def get_invalid_number(numbers: List[int], preamble_size: int) -> int:
     preamble = numbers[:preamble_size]
     window = deque(preamble)
     preamble.sort()

@@ -4,8 +4,8 @@ from typing import List, Tuple
 pattern = re.compile(r'^([^:]+): (\d+)-(\d+) or (\d+)-(\d+)$')
 
 
-def read_rules_and_tickets() -> Tuple[List[Tuple[str, int, int, int, int]], List[int], List[List[int]]]:
-    with open("input", "r") as file:
+def read_rules_and_tickets(filename: str) -> Tuple[List[Tuple[str, int, int, int, int]], List[int], List[List[int]]]:
+    with open(filename, "r") as file:
         sections = file.read().split('\n\n')
         return get_rules(sections[0].split('\n')), \
                get_your_ticket(sections[1].split('\n')), \

@@ -1,11 +1,11 @@
 import itertools
 from typing import List, Tuple
 
-from day14.common import read_program, mask_pattern, mem_pattern
+from day14.common import mask_pattern, mem_pattern, read_program
 
 
-def main():
-    program = read_program()
+def solve(filename: str) -> int:
+    program = read_program(filename)
 
     mem = {}
     masks = []
@@ -25,7 +25,7 @@ def main():
                 indices = [i for i, ch in enumerate(value) if ch == 'X']
                 masks = [create_masks_tuple(base_zeroes.copy(), base_ones.copy(), digits, indices)
                          for digits in itertools.product('01', repeat=len(indices))]
-    print(sum(mem.values()))
+    return sum(mem.values())
 
 
 def create_masks_tuple(zeroes: List[str], ones: List[str], digits: Tuple[any], indices: List[int]) -> Tuple[int, int]:
@@ -37,7 +37,3 @@ def create_masks_tuple(zeroes: List[str], ones: List[str], digits: Tuple[any], i
 
 def binary_to_int(mask: List[str]) -> int:
     return int(''.join(mask), 2)
-
-
-if __name__ == "__main__":
-    main()

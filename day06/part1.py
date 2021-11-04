@@ -1,8 +1,8 @@
 from day06.common import read_answers
 
 
-def main():
-    answers = read_answers()
+def solve(filename: str) -> int:
+    answers = read_answers(filename)
 
     total_count = 0
     for group_answers in answers:
@@ -13,8 +13,4 @@ def main():
         # popcount operation the Python way
         total_count += bin(bitset).count('1')
 
-    print(total_count)
-
-
-if __name__ == "__main__":
-    main()
+    return total_count

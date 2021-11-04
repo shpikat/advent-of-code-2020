@@ -6,12 +6,12 @@ from typing import List
 from day22.common import read_decks
 
 
-def main():
-    decks = read_decks()
+def solve(filename: str) -> int:
+    decks = read_decks(filename)
 
     winner_index = play_game(decks)
 
-    print(sum(card * (i + 1) for i, card in enumerate(reversed(decks[winner_index]))))
+    return sum(card * (i + 1) for i, card in enumerate(reversed(decks[winner_index])))
 
 
 def play_game(decks: List[deque]) -> int:
@@ -40,7 +40,3 @@ def play_game(decks: List[deque]) -> int:
             for card, _ in current_round_result:
                 round_winner.append(card)
     return next(i for i, deck in enumerate(decks) if deck)
-
-
-if __name__ == "__main__":
-    main()

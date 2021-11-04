@@ -1,8 +1,8 @@
 from day04.common import read_input
 
 
-def main():
-    passports = read_input()
+def solve(filename: str) -> int:
+    passports = read_input(filename)
     required_fields = {
         'byr',
         'iyr',
@@ -19,8 +19,4 @@ def main():
     for passport in passports:
         if required_fields.issubset({*passport}):
             valid_count += 1
-    print(valid_count)
-
-
-if __name__ == "__main__":
-    main()
+    return valid_count

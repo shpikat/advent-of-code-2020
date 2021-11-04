@@ -1,8 +1,8 @@
 from day21.common import read_foods
 
 
-def main():
-    foods = read_foods()
+def solve(filename: str) -> str:
+    foods = read_foods(filename)
 
     candidates = {}
     for food in foods:
@@ -26,8 +26,4 @@ def main():
         for ingredients in candidates.values():
             ingredients -= ingredients_to_remove
 
-    print(','.join(allergens[allergen] for allergen in sorted(allergens)))
-
-
-if __name__ == "__main__":
-    main()
+    return ','.join(allergens[allergen] for allergen in sorted(allergens))

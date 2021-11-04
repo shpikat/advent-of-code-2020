@@ -3,8 +3,8 @@ from operator import itemgetter
 from day22.common import read_decks
 
 
-def main():
-    decks = read_decks()
+def solve(filename: str) -> int:
+    decks = read_decks(filename)
 
     while all(decks):
         current_round = sorted(((deck.popleft(), deck) for deck in decks), key=itemgetter(0), reverse=True)
@@ -13,8 +13,4 @@ def main():
             round_winner.append(card)
 
     winner = next(deck for deck in decks if deck)
-    print(sum(card * (i + 1) for i, card in enumerate(reversed(winner))))
-
-
-if __name__ == "__main__":
-    main()
+    return sum(card * (i + 1) for i, card in enumerate(reversed(winner)))

@@ -1,8 +1,8 @@
 from day01.common import read_expenses
 
 
-def main():
-    expenses = read_expenses()
+def solve(filename: str) -> int:
+    expenses = read_expenses(filename)
 
     expenses.sort()
     little = 0
@@ -14,12 +14,6 @@ def main():
         elif current > 2020:
             big -= 1
         else:
-            print(expenses[little] * expenses[big])
-            break
+            return expenses[little] * expenses[big]
     else:
         print("No pair summing 2020 is detected")
-
-
-
-if __name__ == "__main__":
-    main()

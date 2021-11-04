@@ -1,10 +1,6 @@
-from day15.common import read_starting_numbers, get_nth_number
+from day15.common import get_nth_number, read_starting_numbers
 
 
-def main():
-    starting_numbers = read_starting_numbers()
-    print(get_nth_number(starting_numbers, 30000000))
-
-
-if __name__ == "__main__":
-    main()
+def solve(filename: str) -> int:
+    starting_numbers = read_starting_numbers(filename)
+    return get_nth_number(starting_numbers, 30000000)

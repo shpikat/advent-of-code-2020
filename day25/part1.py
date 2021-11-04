@@ -1,12 +1,12 @@
-from day25.common import read_public_keys, DIVISOR, SUBJECT
+from day25.common import DIVISOR, SUBJECT, read_public_keys
 
 
-def main():
-    card_public_key, door_public_key = read_public_keys()
+def solve(filename: str) -> int:
+    card_public_key, door_public_key = read_public_keys(filename)
 
     card_loop_size = find_loop_size(card_public_key, SUBJECT, DIVISOR)
 
-    print(pow(door_public_key, card_loop_size, DIVISOR))
+    return pow(door_public_key, card_loop_size, DIVISOR)
 
 
 def find_loop_size(public_key, subject, divisor):
@@ -16,7 +16,3 @@ def find_loop_size(public_key, subject, divisor):
         loop_size += 1
         value = (value * subject) % divisor
     return loop_size
-
-
-if __name__ == "__main__":
-    main()

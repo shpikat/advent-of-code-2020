@@ -1,12 +1,12 @@
 from day18.common import read_expressions
 
 
-def main():
-    expressions = read_expressions()
-    print(sum(solve(expression) for expression in expressions if expression))
+def solve(filename: str) -> int:
+    expressions = read_expressions(filename)
+    return sum(_solve(expression) for expression in expressions if expression)
 
 
-def solve(expression: str) -> int:
+def _solve(expression: str) -> int:
     stack = []
     accumulator = 0
     operand = 0
@@ -48,7 +48,3 @@ def solve(expression: str) -> int:
         accumulator = operator(accumulator, operand)
 
     return accumulator
-
-
-if __name__ == "__main__":
-    main()

@@ -1,6 +1,6 @@
 from typing import List
 
 
-def read_answers() -> List[List[str]]:
-    with open("input", "r") as file:
-        return [group.split('\n') for group in file.read().split('\n\n')]
+def read_answers(filename: str) -> List[List[str]]:
+    with open(filename, "r") as file:
+        return [group.rstrip().split('\n') for group in file.read().split('\n\n')]

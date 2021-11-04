@@ -1,8 +1,8 @@
-from typing import List, Tuple, Dict
+from typing import Dict, List, Tuple
 
 
-def read_rules_and_messages() -> Tuple[Dict[str, str], List[str]]:
-    with open("input", "r") as file:
+def read_rules_and_messages(filename: str) -> Tuple[Dict[str, str], List[str]]:
+    with open(filename, "r") as file:
         rules, messages = file.read().rstrip().split('\n\n')
         return \
             read_rules_to_list(rules.split('\n')), \

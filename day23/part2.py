@@ -4,8 +4,8 @@ TOTAL_CUPS = 1_000_000
 MOVES = 10_000_000
 
 
-def main():
-    labeling = read_labeling()
+def solve(filename: str) -> int:
+    labeling = read_labeling(filename)
 
     next_values = [i + 1 for i in range(TOTAL_CUPS + 1)]
 
@@ -36,8 +36,4 @@ def main():
 
     cup1 = next_values[1]
     cup2 = next_values[cup1]
-    print(cup1 * cup2)
-
-
-if __name__ == "__main__":
-    main()
+    return cup1 * cup2

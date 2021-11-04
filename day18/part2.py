@@ -3,9 +3,9 @@ from typing import List
 from day18.common import read_expressions
 
 
-def main():
-    expressions = read_expressions()
-    print(sum(solve(expression) for expression in expressions if expression))
+def solve(filename: str) -> int:
+    expressions = read_expressions(filename)
+    return sum(_solve(expression) for expression in expressions if expression)
 
 
 operators = {
@@ -14,7 +14,7 @@ operators = {
 }
 
 
-def solve(expression: str) -> int:
+def _solve(expression: str) -> int:
     operands_stack = []
     operations_stack = []
     operand = 0
@@ -59,7 +59,3 @@ def do_operation(operands_stack: List[int], operator: str) -> None:
 
 def is_precedence_same_or_higher(o1: str, o2: str) -> bool:
     return o1 != '(' and (o1 == o2 or o1 == '+')
-
-
-if __name__ == "__main__":
-    main()

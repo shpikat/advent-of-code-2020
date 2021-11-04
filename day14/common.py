@@ -5,6 +5,6 @@ mask_pattern = re.compile(r'^mask = (\w+)$')
 mem_pattern = re.compile(r'^mem\[(\d+)] = (\d+)$')
 
 
-def read_program() -> List[str]:
-    with open("input", "r") as file:
+def read_program(filename: str) -> List[str]:
+    with open(filename, "r") as file:
         return file.read().split('\n')

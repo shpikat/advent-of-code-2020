@@ -1,12 +1,13 @@
 from collections import deque
 
-from day09.common import read_numbers, get_invalid_number
+from day09.common import get_invalid_number, read_numbers
 
 
-def main():
-    numbers = read_numbers()
+def solve(filename: str) -> int:
+    preamble_size = 5 if filename.endswith("sample.txt") else 25
+    numbers = read_numbers(filename)
 
-    target_sum = get_invalid_number(numbers)
+    target_sum = get_invalid_number(numbers, preamble_size)
 
     window = deque()
     window_sum = 0
@@ -18,8 +19,4 @@ def main():
             number = next(it)
             window.append(number)
             window_sum += number
-    print(min(window) + max(window))
-
-
-if __name__ == "__main__":
-    main()
+    return min(window) + max(window)

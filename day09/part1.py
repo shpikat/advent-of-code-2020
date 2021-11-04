@@ -1,11 +1,7 @@
-from day09.common import read_numbers, get_invalid_number
+from day09.common import get_invalid_number, read_numbers
 
 
-def main():
-    numbers = read_numbers()
-
-    print(get_invalid_number(numbers))
-
-
-if __name__ == "__main__":
-    main()
+def solve(filename: str) -> int:
+    preamble_size = 5 if filename.endswith("sample.txt") else 25
+    numbers = read_numbers(filename)
+    return get_invalid_number(numbers, preamble_size)

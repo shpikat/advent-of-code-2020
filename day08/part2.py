@@ -1,8 +1,8 @@
 from day08.common import read_program, run_with_loop_detection
 
 
-def main():
-    program = read_program()
+def solve(filename: str) -> int:
+    program = read_program(filename)
 
     for index, (command, argument) in enumerate(program):
         if command == 'jmp':
@@ -15,9 +15,4 @@ def main():
         patched_program[index] = patched_command, argument
         accumulator, is_success = run_with_loop_detection(patched_program)
         if is_success:
-            print(accumulator)
-            break
-
-
-if __name__ == "__main__":
-    main()
+            return accumulator

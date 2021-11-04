@@ -2,8 +2,8 @@ from collections import deque
 from typing import List
 
 
-def read_decks() -> List[deque]:
-    with open("input", "r") as file:
+def read_decks(filename: str) -> List[deque]:
+    with open(filename, "r") as file:
         return [read_deck(deck) for deck in file.read().rstrip().split('\n\n')]
 
 

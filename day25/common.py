@@ -4,8 +4,8 @@ SUBJECT = 7
 DIVISOR = 20201227
 
 
-def read_public_keys() -> Tuple[int, int]:
-    with open("input", "r") as file:
+def read_public_keys(filename: str) -> Tuple[int, int]:
+    with open(filename, "r") as file:
         return readline(file), readline(file)
 
 

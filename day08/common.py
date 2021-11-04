@@ -1,8 +1,8 @@
 from typing import List, Tuple
 
 
-def read_program() -> List[Tuple[str, int]]:
-    with open("input", "r") as file:
+def read_program(filename: str) -> List[Tuple[str, int]]:
+    with open(filename, "r") as file:
         return [parse(line.rstrip()) for line in file.readlines()]
 
 

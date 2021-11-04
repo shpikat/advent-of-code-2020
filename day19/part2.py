@@ -6,8 +6,8 @@ from day19.common import read_rules_and_messages
 MAIN_RULE_INDEX = 0
 
 
-def main():
-    raw_rules, messages = read_rules_and_messages()
+def solve(filename: str) -> int:
+    raw_rules, messages = read_rules_and_messages(filename)
     raw_rules["8"] = "42 | 42 8"
     raw_rules["11"] = "42 31 | 42 11 31"
 
@@ -15,7 +15,7 @@ def main():
 
     regex = get_regex_for_rule(raw_rules, MAIN_RULE_INDEX, max_length)
     pattern = re.compile(regex)
-    print(sum(1 for message in messages if pattern.fullmatch(message)))
+    return sum(1 for message in messages if pattern.fullmatch(message))
 
 
 def get_regex_for_rule(raw_rules: Dict[str, str], rule_index: int, max_length: int) -> str:
@@ -57,7 +57,3 @@ def get_next_rule(raw_rules: Dict[str, str], memoizer: Dict[str, str], rule: str
         memoizer[rule] = regex
         return rule
     return raw_rules[rule]
-
-
-if __name__ == "__main__":
-    main()

@@ -22,8 +22,8 @@ def rotate(point: Tuple[int, int], angle_degrees: int) -> Tuple[int, int]:
     return round(x * angle_cosine - y * angle_sine), round(y * angle_cosine + x * angle_sine)
 
 
-def main():
-    instructions = read_instructions()
+def solve(filename: str) -> int:
+    instructions = read_instructions(filename)
 
     ship = (0, 0)
     waypoint = (10, -1)
@@ -31,8 +31,4 @@ def main():
     for action, value in instructions:
         ship, waypoint = actions[action](ship, waypoint, value)
 
-    print(abs(ship[0]) + abs(ship[1]))
-
-
-if __name__ == "__main__":
-    main()
+    return abs(ship[0]) + abs(ship[1])

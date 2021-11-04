@@ -1,8 +1,8 @@
-from day03.common import read_map, TREE
+from day03.common import TREE, read_map
 
 
-def main():
-    map_input = read_map()
+def solve(filename: str) -> int:
+    map_input = read_map(filename)
     wrap_at = len(map_input[0])
 
     slopes = [
@@ -28,8 +28,4 @@ def main():
     result = 1
     for count in counts:
         result *= count
-    print(result)
-
-
-if __name__ == "__main__":
-    main()
+    return result

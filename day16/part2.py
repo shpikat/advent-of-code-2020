@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Tuple, Set
+from typing import List, Set, Tuple
 
 from day16.common import read_rules_and_tickets
 from day16.part1 import is_field_invalid
@@ -15,8 +15,8 @@ class Node:
     right: 'Node' = None
 
 
-def main():
-    rules, your_ticket, nearby_tickets = read_rules_and_tickets()
+def solve(filename: str) -> int:
+    rules, your_ticket, nearby_tickets = read_rules_and_tickets(filename)
 
     valid_tickets = [ticket for ticket in nearby_tickets if is_ticket_valid(rules, ticket)]
 
@@ -47,7 +47,7 @@ def main():
     for position, name in enumerate(fields):
         if name.startswith('departure'):
             result *= your_ticket[position]
-    print(result)
+    return result
 
 
 def is_ticket_valid(rules: List[Tuple[str, int, int, int, int]], ticket: List[int]) -> bool:
@@ -96,7 +96,3 @@ def find_overlaps(root: Node, value: int) -> Set[str]:
                     overlaps.add(current.name)
                 current = current.right
     return overlaps
-
-
-if __name__ == "__main__":
-    main()

@@ -1,8 +1,8 @@
 from day10.common import read_joltage_ratings
 
 
-def main():
-    ratings = read_joltage_ratings()
+def solve(filename: str) -> int:
+    ratings = read_joltage_ratings(filename)
 
     ratings.sort()
     # append device joltage
@@ -15,8 +15,4 @@ def main():
                                       possibilities_per_rating.get(r - 2, 0) + \
                                       possibilities_per_rating.get(r - 3, 0)
 
-    print(possibilities_per_rating[device])
-
-
-if __name__ == "__main__":
-    main()
+    return possibilities_per_rating[device]

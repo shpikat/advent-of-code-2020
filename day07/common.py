@@ -5,8 +5,8 @@ parser_bag = re.compile(r"(\w+ \w+) bags contain ")
 parser_contains = re.compile(r"(\d+) (\w+ \w+) bags?(, )?")
 
 
-def read_rules() -> List[Tuple[str, List[Tuple[int, str]]]]:
-    with open("input", "r") as file:
+def read_rules(filename: str) -> List[Tuple[str, List[Tuple[int, str]]]]:
+    with open(filename, "r") as file:
         return [parse(rule.strip()) for rule in file.readlines()]
 
 

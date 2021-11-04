@@ -11,8 +11,8 @@ class Food:
     allergens: List[str]
 
 
-def read_foods() -> List[Food]:
-    with open("input", "r") as file:
+def read_foods(filename: str) -> List[Food]:
+    with open(filename, "r") as file:
         return [parse_food(line) for line in file.read().rstrip().split('\n')]
 
 

@@ -1,12 +1,8 @@
 from day08.common import read_program, run_with_loop_detection
 
 
-def main():
-    program = read_program()
+def solve(filename: str) -> int:
+    program = read_program(filename)
 
     accumulator, _ = run_with_loop_detection(program)
-    print(accumulator)
-
-
-if __name__ == "__main__":
-    main()
+    return accumulator

@@ -5,14 +5,15 @@ from day19.common import read_rules_and_messages
 
 MAIN_RULE_INDEX = 0
 
-def main():
-    raw_rules, messages = read_rules_and_messages()
+
+def solve(filename: str) -> int:
+    raw_rules, messages = read_rules_and_messages(filename)
 
     # Didn't want to solve this day using regex, but had to cave in with day 2.
     # The original implementation is still in commit history though.
     regex = get_regex_for_rule(raw_rules, MAIN_RULE_INDEX)
     pattern = re.compile(regex)
-    print(sum(1 for message in messages if pattern.fullmatch(message)))
+    return sum(1 for message in messages if pattern.fullmatch(message))
 
 
 def get_regex_for_rule(raw_rules: Dict[str, str], rule_index: int) -> str:
@@ -32,7 +33,3 @@ def get_regex(raw_rules: Dict[str, str], memoizer: Dict[str, str], raw_rule: str
     regex = '(' + '|'.join(alternative_rules) + ')'
     memoizer[raw_rule] = regex
     return regex
-
-
-if __name__ == "__main__":
-    main()

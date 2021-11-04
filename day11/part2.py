@@ -1,8 +1,8 @@
-from day11.common import read_seats_layout, FLOOR, SEAT, OCCUPIED
+from day11.common import FLOOR, OCCUPIED, SEAT, read_seats_layout
 
 
-def main():
-    layout = read_seats_layout()
+def solve(filename: str) -> int:
+    layout = read_seats_layout(filename)
 
     vectors = [(-1, -1), (0, -1), (1, -1),
                (-1, 0), (1, 0),
@@ -39,8 +39,4 @@ def main():
             new_layout.append(new_row)
         layout = new_layout
 
-    print(sum((line.count(OCCUPIED) for line in layout)))
-
-
-if __name__ == "__main__":
-    main()
+    return sum((line.count(OCCUPIED) for line in layout))

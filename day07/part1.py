@@ -3,8 +3,8 @@ from collections import defaultdict
 from day07.common import read_rules
 
 
-def main():
-    rules = read_rules()
+def solve(filename: str) -> int:
+    rules = read_rules(filename)
 
     index = defaultdict(set)
     for bag, contains in rules:
@@ -19,8 +19,4 @@ def main():
                                for bag in current_iteration
                                for contained in index[bag])
         current_iteration = iteration_result - result
-    print(len(result))
-
-
-if __name__ == "__main__":
-    main()
+    return len(result)

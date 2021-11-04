@@ -1,18 +1,17 @@
-from day24.common import read_instructions
+from typing import List, Set, Tuple
 
-moves = {
-    'e': lambda x, y: (x + 1, y),
-    'se': lambda x, y: (x, y - 1),
-    'sw': lambda x, y: (x - 1, y - 1),
-    'w': lambda x, y: (x - 1, y),
-    'nw': lambda x, y: (x, y + 1),
-    'ne': lambda x, y: (x + 1, y + 1),
-}
+from day24.common import moves, read_instructions
 
 
-def main():
-    instructions = read_instructions()
+def solve(filename: str) -> int:
+    instructions = read_instructions(filename)
 
+    black_tiles = lay_tiles(instructions)
+
+    return len(black_tiles)
+
+
+def lay_tiles(instructions: List[List[str]]) -> Set[Tuple[int, int]]:
     black_tiles = set()
     for line in instructions:
         tile = (0, 0)
@@ -22,8 +21,4 @@ def main():
             black_tiles.remove(tile)
         else:
             black_tiles.add(tile)
-    print(len(black_tiles))
-
-
-if __name__ == "__main__":
-    main()
+    return black_tiles

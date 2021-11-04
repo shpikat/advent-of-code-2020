@@ -2,7 +2,7 @@ import itertools
 from dataclasses import dataclass
 from typing import Set
 
-from day17.common import read_initial_state, INACTIVE, ACTIVE
+from day17.common import ACTIVE, INACTIVE, read_initial_state
 
 
 @dataclass(frozen=True)
@@ -12,8 +12,8 @@ class Coordinate:
     z: int
 
 
-def main():
-    initial_state = read_initial_state()
+def solve(filename: str) -> int:
+    initial_state = read_initial_state(filename)
 
     grid = {Coordinate(x, y, 0)
             for y, line in enumerate(initial_state)
@@ -47,14 +47,10 @@ def main():
         grid.update(elements_to_add)
         grid.difference_update(elements_to_remove)
 
-    print(len(grid))
+    return len(grid)
 
 
 def count_neighbourhood(grid: Set[Coordinate], x: int, y: int, z: int) -> int:
     """ Count all active cubes in the neighbourhood, including the center. """
     return sum(1 for dx, dy, dz in (itertools.product((-1, 0, 1), repeat=3))
                if Coordinate(x + dx, y + dy, z + dz) in grid)
-
-
-if __name__ == "__main__":
-    main()

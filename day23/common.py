@@ -1,3 +1,3 @@
-def read_labeling() -> str:
-    with open("input", "r") as file:
+def read_labeling(filename: str) -> str:
+    with open(filename, "r") as file:
         return file.read().rstrip()

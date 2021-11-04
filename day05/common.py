@@ -1,8 +1,8 @@
 from typing import List
 
 
-def read_boarding_tickets() -> List[str]:
-    with open("input", "r") as file:
+def read_boarding_tickets(filename: str) -> List[str]:
+    with open(filename, "r") as file:
         return [line.rstrip() for line in file.readlines()]
 
 

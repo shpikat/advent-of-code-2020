@@ -1,8 +1,8 @@
-from day14.common import read_program, mask_pattern, mem_pattern
+from day14.common import mask_pattern, mem_pattern, read_program
 
 
-def main():
-    program = read_program()
+def solve(filename: str) -> int:
+    program = read_program(filename)
 
     mem = {}
     zeroes = -1
@@ -19,8 +19,4 @@ def main():
                 value = match.group(1)
                 zeroes = int(value.replace('X', '1'), 2)
                 ones = int(value.replace('X', '0'), 2)
-    print(sum(mem.values()))
-
-
-if __name__ == "__main__":
-    main()
+    return sum(mem.values())
