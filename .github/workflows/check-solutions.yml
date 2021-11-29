@@ -1,4 +1,4 @@
-name: Advent of Code super-test
+name: Check all solutions
 
 on:
   push:
